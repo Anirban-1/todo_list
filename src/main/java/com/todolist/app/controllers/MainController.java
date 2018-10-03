@@ -18,7 +18,7 @@ public class MainController {
 	@Autowired
 	UserService userService;
 	
-    @PostMapping("/add")
+    @PostMapping("/signup")
     public User greeting(@RequestBody User user) {
     	
     	userService.saveUser(user);
