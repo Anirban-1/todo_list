@@ -3,7 +3,6 @@ package com.todolist.app.service;
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.todolist.app.model.*;
@@ -12,7 +11,7 @@ import com.todolist.app.model.*;
 public class UserService {
 
 	@Autowired
-	private UserRepository repository;
+	private UserDTO repository;
 	
 	public User findByUserName(User user) {
 		
@@ -26,10 +25,12 @@ public class UserService {
 	}
 
 	public void saveUser(User user) {
-		if (user != null && findByUserName(user) == null) {
+//		if (user != null && findByUserName(user) == null) {
+//			repository.save(user);
+//		}
+		if(user != null && repository.findByUserName(user.getUserName()) == null) {
 			repository.save(user);
 		}
-		
 	}
 	
 	public Iterable<User> findAllUsers(){
