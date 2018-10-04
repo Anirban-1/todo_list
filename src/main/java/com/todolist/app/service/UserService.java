@@ -13,12 +13,12 @@ public class UserService {
 	@Autowired
 	private UserDTO repository;
 	
-	public User findByUserName(User user) {
+	public User findByUserName(String userName) {
 		
 		Iterator<User> iter = repository.findAll().iterator();
 		while (iter.hasNext()) {
 			User u = iter.next();
-			if (u.getUserName().equals(user.getUserName()))
+			if (u.getUserName().equals(userName))
 				return u;
 		}
 		return null;
