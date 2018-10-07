@@ -12,9 +12,9 @@ public class UserService {
 
 	@Autowired
 	private UserDTO repository;
-	
+
 	public User findByUserName(String userName) {
-		
+
 		Iterator<User> iter = repository.findAll().iterator();
 		while (iter.hasNext()) {
 			User u = iter.next();
@@ -25,15 +25,12 @@ public class UserService {
 	}
 
 	public void saveUser(User user) {
-//		if (user != null && findByUserName(user) == null) {
-//			repository.save(user);
-//		}
-		if(user != null && repository.findByUserName(user.getUserName()) == null) {
+		if (user != null && repository.findByUserName(user.getUserName()) == null) {
 			repository.save(user);
 		}
 	}
-	
-	public Iterable<User> findAllUsers(){
+
+	public Iterable<User> findAllUsers() {
 		return repository.findAll();
 	}
 }
