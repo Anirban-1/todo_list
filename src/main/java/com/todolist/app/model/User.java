@@ -1,28 +1,38 @@
 package com.todolist.app.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
 public class User {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 
-    private String firstName;
-    
-    private String lastName;
-    
-    private String password;
-    
-    private String userName;
+	@Size(max = 65)
+	@NotNull
+	private String firstName;
 
-    private String email;
+	@Size(max = 65)
+	@NotNull
+	private String lastName;
 
-    
-    public String getFirstName() {
+	@NotNull
+	private String password;
+
+	@Size(max = 20)
+	@Column(unique = true)
+	private String userName;
+
+	@Column(unique = true)
+	private String email;
+
+	public String getFirstName() {
 		return firstName;
 	}
 
